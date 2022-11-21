@@ -1,0 +1,172 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- <bean name="/xxxPath" class="com.frame.presentation.action.XxxAction"> 
+		<property name="myXxxService" ref="idXxxService" /> </bean> -->
+	<bean name="/DatePicker"
+		class="com.HealthCareSystem.presentation.action.DatePicker"></bean>
+	<bean name="/SearchDoctor"
+		class="com.HealthCareSystem.presentation.action.SearchDoctor">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+	<bean name="/ViewProgressDetail"
+		class="com.HealthCareSystem.presentation.action.ViewProgressDetail">
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+
+	<bean name="/Register"
+		class="com.HealthCareSystem.presentation.action.Register">
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/AdminLogin"
+		class="com.HealthCareSystem.presentation.action.AdminLogin">
+		<property name="myAdminService" ref="idAdminService" />
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myDoctorService" ref="idDoctorService" />
+		<property name="myDeptService" ref="idDeptService" />
+		<property name="myProgressService" ref="idProgressService" />
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+
+	<bean name="/AdminHome"
+		class="com.HealthCareSystem.presentation.action.AdminHome">
+		<property name="myAdminService" ref="idAdminService" />
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myDoctorService" ref="idDoctorService" />
+		<property name="myDeptService" ref="idDeptService" />
+		<property name="myProgressService" ref="idProgressService" />
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+
+	<bean name="/AdminProfile"
+		class="com.HealthCareSystem.presentation.action.AdminProfile">
+		<property name="myAdminService" ref="idAdminService" />
+	</bean>
+
+	<bean name="/AdminChangePs"
+		class="com.HealthCareSystem.presentation.action.AdminChangePS">
+		<property name="myAdminService" ref="idAdminService" />
+	</bean>
+
+	<bean name="/AddProgress"
+		class="com.HealthCareSystem.presentation.action.AddProgress">
+		<property name="myProgressService" ref="idProgressService" />
+	</bean>
+
+	<bean name="/AdminViewProgress"
+		class="com.HealthCareSystem.presentation.action.AdminViewProgress">
+		<property name="myProgressService" ref="idProgressService" />
+	</bean>
+
+	<bean name="/AdminAddAppointment"
+		class="com.HealthCareSystem.presentation.action.AdminAddAppointment">
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+	<bean name="/AdminViewAppointment"
+		class="com.HealthCareSystem.presentation.action.AdminViewAppointment">
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+
+	<bean name="/AddDoctor"
+		class="com.HealthCareSystem.presentation.action.AddDoctor">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<bean name="/ViewDoctor"
+		class="com.HealthCareSystem.presentation.action.ViewDoctor">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<bean name="/AddPatient"
+		class="com.HealthCareSystem.presentation.action.AddPatient">
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/AdminViewPatient"
+		class="com.HealthCareSystem.presentation.action.AdminViewPatient">
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/Department"
+		class="com.HealthCareSystem.presentation.action.DepartmentAction">
+		<property name="myDeptService" ref="idDeptService" />
+	</bean>
+
+	<bean name="/DoctorLogin"
+		class="com.HealthCareSystem.presentation.action.DoctorLogin">
+		<property name="myDoctorService" ref="idDoctorService" />
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+
+	<bean name="/DoctorAppointment"
+		class="com.HealthCareSystem.presentation.action.DoctorAppointment">
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+
+	<bean name="/DoctorProgress"
+		class="com.HealthCareSystem.presentation.action.DoctorProgress">
+		<property name="myProgressService" ref="idProgressService" />
+	</bean>
+
+	<bean name="/DoctorProfile"
+		class="com.HealthCareSystem.presentation.action.DoctorProfile">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<bean name="/DoctorChangePs"
+		class="com.HealthCareSystem.presentation.action.DoctorChangePs">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<bean name="/PatientLogin"
+		class="com.HealthCareSystem.presentation.action.PatientLogin">
+		<property name="myPatientService" ref="idPatientService" />
+		<property name="myDeptService" ref="idDeptService" />
+	</bean>
+
+	<bean name="/PatientHome"
+		class="com.HealthCareSystem.presentation.action.PatientHome">
+		<property name="myDeptService" ref="idDeptService" />
+	</bean>
+
+	<bean name="/DepartmentDetail"
+		class="com.HealthCareSystem.presentation.action.DepartmentDetail">
+		<property name="myDeptService" ref="idDeptService" />
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+
+	<bean name="/PatientProfile"
+		class="com.HealthCareSystem.presentation.action.PatientProfile">
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/PatientChangePs"
+		class="com.HealthCareSystem.presentation.action.PatientChangePS">
+		<property name="myPatientService" ref="idPatientService" />
+	</bean>
+
+	<bean name="/Progress"
+		class="com.HealthCareSystem.presentation.action.Progress">
+		<property name="myProgressService" ref="idProgressService" />
+	</bean>
+
+	<bean name="/Appointment"
+		class="com.HealthCareSystem.presentation.action.Appointment">
+		<property name="myProgressDetailService"
+			ref="idProgressDetailService" />
+	</bean>
+
+	<bean name="/PatientSearchDoctor"
+		class="com.HealthCareSystem.presentation.action.PatientSearchDoctor">
+		<property name="myDoctorService" ref="idDoctorService" />
+	</bean>
+</beans>

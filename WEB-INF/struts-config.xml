@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+
+	<!-- ================================================ Form Bean Definitions -->
+
+	<form-beans>
+		<!-- sample form bean descriptor for an ActionForm <form-bean name="inputForm" 
+			type="app.InputForm"/> end sample -->
+
+		<!-- sample form bean descriptor for a DynaActionForm <form-bean name="logonForm" 
+			type="org.apache.struts.action.DynaActionForm"> <form-property name="username" 
+			type="java.lang.String"/> <form-property name="password" type="java.lang.String"/> 
+			</form-bean> end sample -->
+
+	</form-beans>
+
+
+	<!-- ========================================= Global Exception Definitions -->
+
+	<global-exceptions>
+		<!-- sample exception handler <exception key="expired.password" type="app.ExpiredPasswordException" 
+			path="/changePassword.jsp"/> end sample -->
+	</global-exceptions>
+
+
+	<!-- =========================================== Global Forward Definitions -->
+
+	<global-forwards>
+
+		<!-- System Forward paths -->
+
+		<forward name="gotoHome" path="/index.jsp" />
+
+		<forward name="gotoSearchDoctor"
+			path="/WEB-INF/jsp/Start/SearchDoctor.jsp" />
+
+		<forward name="gotoRegister"
+			path="/WEB-INF/jsp/Start/Register.jsp" />
+
+		<!-- end of System Forward paths -->
+
+		<!-- Admin Forward paths -->
+
+		<forward name="gotoAdminLogin"
+			path="/WEB-INF/jsp/Admin/AdminLogin.jsp" />
+
+		<forward name="gotoAdminHome"
+			path="/WEB-INF/jsp/Admin/AdminHome.jsp" />
+
+		<forward name="gotoAdminProfile"
+			path="/WEB-INF/jsp/Admin/AdminProfile.jsp" />
+
+		<forward name="gotoAdminChangePs"
+			path="/WEB-INF/jsp/Admin/AdminChangePs.jsp" />
+
+		<forward name="gotoAddProgress"
+			path="/WEB-INF/jsp/Admin/AddProgress.jsp" />
+
+		<forward name="gotoAdminViewProgress"
+			path="/WEB-INF/jsp/Admin/ViewProgress.jsp" />
+
+		<forward name="gotoAdminAddAppointment"
+			path="/WEB-INF/jsp/Admin/AddAppointment.jsp" />
+
+		<forward name="gotoAdminViewAppointment"
+			path="/WEB-INF/jsp/Admin/ViewAppointment.jsp" />
+
+		<forward name="gotoAddDoctor"
+			path="/WEB-INF/jsp/Admin/AddDoctor.jsp" />
+
+		<forward name="gotoViewDoctor"
+			path="/WEB-INF/jsp/Admin/ViewDoctor.jsp" />
+
+		<forward name="gotoAddPatient"
+			path="/WEB-INF/jsp/Admin/AddPatient.jsp" />
+
+		<forward name="gotoAdminViewPatient"
+			path="/WEB-INF/jsp/Admin/ViewPatient.jsp" />
+
+		<forward name="gotoDepartment"
+			path="/WEB-INF/jsp/Admin/Department.jsp" />
+
+		<!-- end of Admin Forward paths -->
+
+		<!-- Doctor Forward paths -->
+
+		<forward name="gotoDoctorLogin"
+			path="/WEB-INF/jsp/Doctor/DoctorLogin.jsp" />
+
+		<forward name="gotoDoctorAppointment"
+			path="/WEB-INF/jsp/Doctor/DoctorAppointment.jsp" />
+
+		<forward name="gotoDoctorProgress"
+			path="/WEB-INF/jsp/Doctor/DoctorProgress.jsp" />
+
+		<forward name="gotoDoctorProfile"
+			path="/WEB-INF/jsp/Doctor/DoctorProfile.jsp" />
+
+		<forward name="gotoDoctorChangePs"
+			path="/WEB-INF/jsp/Doctor/DoctorChangePs.jsp" />
+
+		<!-- end of Doctor Forward paths -->
+
+		<!-- Patient Forward paths -->
+
+		<forward name="gotoLogin"
+			path="/WEB-INF/jsp/Patient/PatientLogin.jsp" />
+
+		<forward name="gotoPatientHome"
+			path="/WEB-INF/jsp/Patient/PatientHome.jsp" />
+
+		<forward name="gotoDeptDetail"
+			path="/WEB-INF/jsp/Patient/Department.jsp" />
+
+		<forward name="gotoPatientProfile"
+			path="/WEB-INF/jsp/Patient/PatientProfile.jsp" />
+
+		<forward name="gotoPatientChangePs"
+			path="/WEB-INF/jsp/Patient/PatientChangePs.jsp" />
+
+		<forward name="gotoProgress"
+			path="/WEB-INF/jsp/Patient/Progress.jsp" />
+
+		<forward name="gotoAppointment"
+			path="/WEB-INF/jsp/Patient/Appointment.jsp" />
+		<forward name="gotoDatePicker"
+			path="/WEB-INF/jsp/Start/DatePicker.jsp" />
+
+		<forward name="gotoPatientSearchDoctor"
+			path="/WEB-INF/jsp/Patient/SearchDoctor.jsp" />
+
+		<!-- end of Patient Forward paths -->
+
+	</global-forwards>
+
+
+	<!-- =========================================== Action Mapping Definitions -->
+
+	<action-mappings>
+		<!-- System action and forward paths -->
+		<action path="/Home" forward="/index.jsp" />
+		<action path="/About" forward="/WEB-INF/jsp/Start/About.jsp" />
+		<action path="/logout"
+			type="com.HealthCareSystem.presentation.action.Logout" />
+		<!-- end of System action and forward paths -->
+
+		<!-- sample input and input submit actions <action path="/Input" type="org.apache.struts.actions.ForwardAction" 
+			parameter="/pages/Input.jsp"/> <action path="/InputSubmit" type="app.InputAction" 
+			name="inputForm" scope="request" validate="true" input="/pages/Input.jsp"/> 
+			<action path="/edit*" type="app.Edit{1}Action" name="inputForm" scope="request" 
+			validate="true" input="/pages/Edit{1}.jsp"/> end samples -->
+	</action-mappings>
+
+
+	<!-- ======================================== Message Resources Definitions -->
+
+	<message-resources parameter="java.MessageResources" />
+
+
+	<!-- =============================================== Plug Ins Configuration -->
+
+
+
+	<!-- ======================================================= Tiles plugin -->
+
+
+	<!-- =================================================== Validator plugin -->
+
+	<plug-in
+		className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/org/apache/struts/validator/validator-rules.xml,
+               /WEB-INF/validation.xml" />
+	</plug-in>
+	<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/action-servletAction.xml, /WEB-INF/action-servletService.xml, WEB-INF/action-servlet.xml" />
+	</plug-in>
+</struts-config>
+

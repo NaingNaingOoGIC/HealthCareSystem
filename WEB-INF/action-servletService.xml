@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://www.directwebremoting.org/schema/spring-dwr 
+	file:///D:/Training/J2EE/spring-dwr-2.0.xsd">
+	<!-- <bean id="idXxxxService" class="com.frame.business.service.XxxService"> 
+		<property name="myXxxDao" ref="idXxxDao" /> </bean> -->
+
+	<bean id="idAdminService"
+		class="com.HealthCareSystem.business.service.AdminService">
+		<property name="myAdminDao" ref="idAdminDao" />
+
+	</bean>
+	<bean id="idDoctorService"
+		class="com.HealthCareSystem.business.service.DoctorService">
+		<property name="myDoctorDao" ref="idDoctorDao" />
+		<property name="myDeptDao" ref="idDeptDao" />
+		<dwr:remote javascript="AjaxDoctorSearch">
+			<dwr:include method="findDoctor" />
+			<dwr:include method="getByDept" />
+			<dwr:include method="showAvailableDoctor" />
+		</dwr:remote>
+		<dwr:remote javascript="AjaxSearchDoctor">
+			<dwr:include method="getByDept" />
+		</dwr:remote>
+		<dwr:remote javascript="AddDoctor">
+			<dwr:include method="degreeWirte" />
+		</dwr:remote>
+	</bean>
+	<bean id="idPatientService"
+		class="com.HealthCareSystem.business.service.PatientService">
+		<property name="myPatientDao" ref="idPatientDao" />
+		<dwr:remote javascript="Patient">
+			<dwr:include method="checkEmail" />
+			<dwr:include method="checkEmailExceptLoginPatient" />
+		</dwr:remote>
+	</bean>
+
+	<bean id="idDeptService"
+		class="com.HealthCareSystem.business.service.DepartmentService">
+		<property name="myDeptDao" ref="idDeptDao" />
+		<property name="myDoctorDao" ref="idDoctorDao" />
+	</bean>
+	<bean id="idProgressService"
+		class="com.HealthCareSystem.business.service.ProgressService">
+		<property name="myPatientDao" ref="idPatientDao" />
+		<property name="myDoctorDao" ref="idDoctorDao" />
+		<property name="myProgressDao" ref="idProgressDao" />
+	</bean>
+	<bean id="idProgressDetailService"
+		class="com.HealthCareSystem.business.service.ProgressDetailService">
+		<property name="myProgressDetailDao"
+			ref="idProgressDetailDao" />
+		<property name="myPatientDao" ref="idPatientDao" />
+		<property name="myDoctorDao" ref="idDoctorDao" />
+		<property name="myProgressDao" ref="idProgressDao" />
+	</bean>
+
+	<dwr:configuration>
+		<dwr:convert type="bean"
+			class="com.HealthCareSystem.business.entity.Doctor"
+			javascript="Doctor" />
+		<dwr:convert type="bean"
+			class="com.HealthCareSystem.business.entity.Patient"
+			javascript="Patient" />
+		<dwr:convert type="bean"
+			class="com.HealthCareSystem.business.entity.Department"
+			javascript="Department" />
+
+	</dwr:configuration>
+	<dwr:controller id="dwrController" debug="true" />
+</beans>

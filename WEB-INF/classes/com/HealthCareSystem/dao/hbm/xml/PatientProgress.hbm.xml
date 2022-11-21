@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 23, 2022, 6:48:25 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+	<class
+		name="com.HealthCareSystem.business.entity.PatientProgress"
+		table="patient_progress" catalog="healthcaresystem"
+		optimistic-lock="version" lazy="false">
+		<id name="progressId" type="java.lang.Integer">
+			<column name="progress_id" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="doctor"
+			class="com.HealthCareSystem.business.entity.Doctor" fetch="select">
+			<column name="doctor_id" not-null="true" />
+		</many-to-one>
+		<many-to-one name="patient"
+			class="com.HealthCareSystem.business.entity.Patient" fetch="select">
+			<column name="patient_id" not-null="true" />
+		</many-to-one>
+		<property name="diseaseName" type="string">
+			<column name="disease_name" />
+		</property>
+		<property name="symptoms" type="string">
+			<column name="symptoms" length="65535" not-null="true" />
+		</property>
+		<property name="status" type="string">
+			<column name="status" length="20" not-null="true" />
+		</property>
+		<set name="progressDetails" table="progress_detail" inverse="true"
+			lazy="false" fetch="select">
+			<key>
+				<column name="progress_id" not-null="true" />
+			</key>
+			<one-to-many
+				class="com.HealthCareSystem.business.entity.ProgressDetail" />
+		</set>
+	</class>
+</hibernate-mapping>

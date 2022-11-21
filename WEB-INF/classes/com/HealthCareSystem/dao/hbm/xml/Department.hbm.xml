@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 23, 2022, 6:48:25 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+	<class name="com.HealthCareSystem.business.entity.Department"
+		table="department" catalog="healthcaresystem"
+		optimistic-lock="version" lazy="false">
+		<id name="departmentId" type="java.lang.Integer">
+			<column name="department_id" />
+			<generator class="identity" />
+		</id>
+		<property name="departmentName" type="string">
+			<column name="department_name" not-null="true" unique="true" />
+		</property>
+		<property name="departmentDescription" type="string">
+			<column name="department_description" length="65535"
+				not-null="true" />
+		</property>
+		<property name="status" type="string">
+			<column name="status" length="20" not-null="true" />
+		</property>
+		<set name="doctors" table="doctor" inverse="true" lazy="false"
+			fetch="select">
+			<key>
+				<column name="department" not-null="true" />
+			</key>
+			<one-to-many
+				class="com.HealthCareSystem.business.entity.Doctor" />
+		</set>
+	</class>
+</hibernate-mapping>

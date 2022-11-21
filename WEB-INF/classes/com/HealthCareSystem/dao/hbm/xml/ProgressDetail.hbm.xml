@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 23, 2022, 6:48:25 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+	<class name="com.HealthCareSystem.business.entity.ProgressDetail"
+		table="progress_detail" catalog="healthcaresystem"
+		optimistic-lock="version" lazy="false">
+		<id name="progressDetailId" type="java.lang.Integer">
+			<column name="progress_detail_id" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="patientProgress"
+			class="com.HealthCareSystem.business.entity.PatientProgress"
+			fetch="select">
+			<column name="progress_id" not-null="true" />
+		</many-to-one>
+		<property name="appointmentDate" type="date">
+			<column name="appointment_date" length="10" not-null="true" />
+		</property>
+		<property name="appointmentTime" type="time">
+			<column name="appointment_time" length="8" not-null="true" />
+		</property>
+		<property name="appointmentStatus" type="string">
+			<column name="appointment_status" length="20" not-null="true" />
+		</property>
+		<property name="reason" type="string">
+			<column name="reason" length="65535" not-null="true" />
+		</property>
+		<property name="progressDescription" type="string">
+			<column name="progress_description" length="65535" />
+		</property>
+		<property name="remark" type="string">
+			<column name="remark" length="65535" />
+		</property>
+	</class>
+</hibernate-mapping>

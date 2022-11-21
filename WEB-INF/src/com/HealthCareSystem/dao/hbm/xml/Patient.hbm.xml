@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 23, 2022, 6:48:25 PM by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+	<class name="com.HealthCareSystem.business.entity.Patient"
+		table="patient" catalog="healthcaresystem" optimistic-lock="version"
+		lazy="false">
+		<id name="patientId" type="java.lang.Integer">
+			<column name="patient_id" />
+			<generator class="identity" />
+		</id>
+		<property name="patientLoginName" type="string">
+			<column name="patient_login_name" length="50" unique="true" />
+		</property>
+		<property name="password" type="string">
+			<column name="password" length="50" />
+		</property>
+		<property name="patientName" type="string">
+			<column name="patient_name" length="50" not-null="true" />
+		</property>
+		<property name="gender" type="string">
+			<column name="gender" length="10" not-null="true" />
+		</property>
+		<property name="dateOfBirth" type="date">
+			<column name="date_of_birth" length="10" not-null="true" />
+		</property>
+		<property name="mail" type="string">
+			<column name="mail" length="100" not-null="true" />
+		</property>
+		<property name="phone" type="string">
+			<column name="phone" length="20" not-null="true" />
+		</property>
+		<property name="bloodType" type="string">
+			<column name="blood_type" length="10" />
+		</property>
+		<property name="address" type="string">
+			<column name="address" not-null="true" />
+		</property>
+		<set name="patientProgresses" table="patient_progress"
+			inverse="true" lazy="false" fetch="select">
+			<key>
+				<column name="patient_id" not-null="true" />
+			</key>
+			<one-to-many
+				class="com.HealthCareSystem.business.entity.PatientProgress" />
+		</set>
+	</class>
+</hibernate-mapping>
